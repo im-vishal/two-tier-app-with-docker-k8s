@@ -1,8 +1,10 @@
 # How to create EKS cluster using eksctl utility
 
 ## Pre-requisites:
+
 - IAM user with **access keys and secret access keys**
-- AWSCLI should be configured 
+- AWSCLI should be configured
+
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip
@@ -11,7 +13,8 @@ sudo ./aws/install
 aws configure
 ```
 
-- Install **kubectl** 
+- Install **kubectl**
+
 ```bash
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
@@ -19,7 +22,8 @@ sudo mv ./kubectl /usr/local/bin
 kubectl version --short --client
 ```
 
-- Install **eksctl** 
+- Install **eksctl**
+
 ```bash
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
@@ -27,8 +31,11 @@ eksctl version
 ```
 
 # Option 1
+
 ### Steps to create EKS cluster:
+
 - Create EKS Cluster
+
 ```bash
 eksctl create cluster --name=my-cluster \
                     --region=us-west-2 \
@@ -37,15 +44,18 @@ eksctl create cluster --name=my-cluster \
 ```
 
 - Associate IAM OIDC Provider
+
 ```bash
 eksctl utils associate-iam-oidc-provider \
     --region us-west-2 \
     --cluster my-cluster \
     --approve
 ```
+
 #
 
 - Create Nodegroup
+
 ```bash
 eksctl create nodegroup --cluster=my-cluster \
                     --region=us-west-2 \
@@ -56,12 +66,15 @@ eksctl create nodegroup --cluster=my-cluster \
                     --nodes-max=2 \
                     --node-volume-size=29 \
                     --ssh-access \
-                    --ssh-public-key=eks-nodegroup-key 
+                    --ssh-public-key=eks-nodegroup-key
 ```
+
 #### Note: Make sure the ssh-public-key "eks-nodegroup-key is available in your aws account"
+
 #
 
 - Update Kubectl Context
+
 ```bash
 aws eks update-kubeconfig --region us-west-2 --name my-cluster
 ```
@@ -69,11 +82,13 @@ aws eks update-kubeconfig --region us-west-2 --name my-cluster
 # Option 2
 
 - Create EKS Cluster
+
 ```bash
-ekctl create cluster --name tws-cluster --region us-west-2 --node-type t3.small --nodes-min 2 --nodes-max 3
+ekctl create cluster --name tws-cluster --region us-south-1 --node-type t3.small --nodes-min 2 --nodes-max 3
 ```
 
 - Delete EKS Cluster
+
 ```bash
 eksctl delete cluster --name=my-cluster --region=us-west-2
 ```
