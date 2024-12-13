@@ -22,8 +22,9 @@ services:
   flask-app:
     # build:
     #   context: .
-    # container_name: flask-app
-    image: virtualvishal/flaskapp:latest
+    #   dockerfile: Dockerfile-multistage
+    container_name: flask-app
+    image: virtualvishal/flask-app:latest
     ports:
       - "5000:5000"
     environment:

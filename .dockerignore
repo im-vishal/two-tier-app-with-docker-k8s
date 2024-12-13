@@ -1,0 +1,7 @@
+.venv/
+mysql-data/
+*.md
+message.sql
+*.pem
+.gitignore
+k8s/
