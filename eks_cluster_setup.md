@@ -84,7 +84,7 @@ aws eks update-kubeconfig --region us-west-2 --name my-cluster
 - Create EKS Cluster
 
 ```bash
-ekctl create cluster --name tws-cluster --region us-south-1 --node-type t3.small --nodes-min 2 --nodes-max 3
+eksctl create cluster --name tws-cluster --region ap-south-1 --node-type t3.small --nodes-min 2 --nodes-max 3
 ```
 
 - Delete EKS Cluster
