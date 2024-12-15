@@ -16,7 +16,7 @@ aws configure
 - Install **kubectl**
 
 ```bash
-curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+curl -o kubectl https://amazon-eks.s3.ap-south-1.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 kubectl version --short --client
@@ -38,7 +38,7 @@ eksctl version
 
 ```bash
 eksctl create cluster --name=my-cluster \
-                    --region=us-west-2 \
+                    --region=ap-south-1 \
                     --version=1.30 \
                     --without-nodegroup
 ```
@@ -47,7 +47,7 @@ eksctl create cluster --name=my-cluster \
 
 ```bash
 eksctl utils associate-iam-oidc-provider \
-    --region us-west-2 \
+    --region ap-south-1 \
     --cluster my-cluster \
     --approve
 ```
@@ -58,7 +58,7 @@ eksctl utils associate-iam-oidc-provider \
 
 ```bash
 eksctl create nodegroup --cluster=my-cluster \
-                    --region=us-west-2 \
+                    --region=ap-south-1 \
                     --name=my-cluster \
                     --node-type=t2.medium \
                     --nodes=2 \
@@ -76,7 +76,7 @@ eksctl create nodegroup --cluster=my-cluster \
 - Update Kubectl Context
 
 ```bash
-aws eks update-kubeconfig --region us-west-2 --name my-cluster
+aws eks update-kubeconfig --region ap-south-1 --name my-cluster
 ```
 
 # Option 2
@@ -84,11 +84,11 @@ aws eks update-kubeconfig --region us-west-2 --name my-cluster
 - Create EKS Cluster
 
 ```bash
-eksctl create cluster --name tws-cluster --region ap-south-1 --node-type t3.small --nodes-min 2 --nodes-max 3
+eksctl create cluster --name eks-cluster --region ap-south-1 --node-type t3.small --nodes-min 2 --nodes-max 3
 ```
 
 - Delete EKS Cluster
 
 ```bash
-eksctl delete cluster --name=my-cluster --region=us-west-2
+eksctl delete cluster --name=eks-cluster --region=ap-south-1
 ```
