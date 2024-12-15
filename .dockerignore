@@ -1,7 +1,9 @@
 .venv/
 mysql-data/
 *.md
+*.tf
 message.sql
 *.pem
 .gitignore
 k8s/
+terraform-manifests/

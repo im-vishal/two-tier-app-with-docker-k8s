@@ -1,3 +1,6 @@
+app.eraser.io
+
+
 # Docker Commands
 
 - docker build . -t flaskapp
@@ -32,6 +35,11 @@ docker rmi -f $(docker images -aq)
 
 ```
 kubectl apply -f two-tier-app-deployment.yml
+```
+
+- apply all yml files at once
+```bash
+kubectl apply -f .
 ```
 
 - to see pods -->
